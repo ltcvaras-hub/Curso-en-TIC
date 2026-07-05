@@ -484,6 +484,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 10px;
         }
 
         .game-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
@@ -496,75 +497,3 @@
             margin-bottom: 15px;
             border: 1px solid #e2e8f0;
         }
-        .drag-item {
-            background: white;
-            padding: 8px 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 4px;
-            cursor: grab;
-            margin-bottom: 8px;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .drop-zone-container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .drop-target {
-            background: #fff;
-            border: 2px dashed #94a3b8;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            min-height: 40px;
-        }
-        .drop-target.hovered {
-            border-color: var(--secondary-blue);
-            background: #eff6ff;
-        }
-        .game-feedback {
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: 10px;
-            padding: 8px;
-            border-radius: 4px;
-            display: none;
-        }
-        .feedback-success { background: #dcfce7; color: #15803d; }
-        .feedback-error { background: #fee2e2; color: #b91c1c; }
-
-        /* PESTAÑA 6: CUESTIONARIO AUTOEVALUADO */
-        .quiz-container {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .quiz-question {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .quiz-question h4 { font-size: 16px; color: var(--text-dark); margin-bottom: 12px; }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-left: 10px;
-        }
-
-        .quiz-options label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-            cursor: pointer;
-            padding: 10px;
-            border-radius
