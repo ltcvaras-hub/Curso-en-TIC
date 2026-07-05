@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA - Empoderamiento de las TIC en Docentes de EBR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CONFIGURACIÓN GLOBAL */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* PALETA DE COLORES INSTITUCIONALES (TONOS AZULES Y DORADO ACCENTO) */
+        :root {
+            --primary-dark: #002b5c;     /* Azul Marino Oscuro */
+            --primary-blue: #003366;     /* Azul Institucional */
+            --secondary-blue: #1e40af;   /* Azul Eléctrico Curricular */
+            --accent-gold: #D4AF37;      /* Dorado de la I.E. Leoncio Prado */
+            --light-bg: #f8fafc;         /* Fondo claro para tarjetas */
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        /* MENÚ DE NAVEGACIÓN LATERAL (TABS) */
+        .sidebar {
+            width: 280px;
+            background-color: var(--primary-dark);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-header {
+            padding: 25px 20px;
+            background-color: #001f42;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .sidebar-header .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .sidebar-header .logo-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .sidebar-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .sidebar-header p {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .nav-tabs {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            color: #cbd5e1;
+        }
+
+        .nav-item i {
+            width: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .nav-item.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-left-color: var(--accent-gold);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-content {
+            margin-left: 280px;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1200px;
+            width: calc(100% - 280px);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* COMPONENTES DE DISEÑO WEB PROFESIONAL */
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* PESTAÑA 1: INICIO / PORTADA */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-title {
+            font-size: 34px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-purpose {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .welcome-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .grid-metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .meta-box {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-box i {
+            font-size: 28px;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .meta-box h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .meta-box p {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* PESTAÑA 2: FORO DE DEBATE */
+        .forum-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .forum-section {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        .forum-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.5;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-top: 15px;
+        }
+
+        .comment-box {
+            margin-top: 20px;
+        }
+
+        .comment-box textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover { background-color: var(--primary-dark); }
+        .btn-gold { background-color: var(--accent-gold); color: var(--primary-dark); }
+        .btn-gold:hover { background-color: #c59b27; color: white;}
+
+        /* PESTAÑA 3: MARCO DE DESARROLLO (MÓDULOS) */
+        .module-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .module-header {
+            background: var(--light-bg);
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .module-header h3 { margin-bottom: 0; font-size: 18px; }
+
+        .module-body {
+            padding: 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .subtheme-box {
+            background: #f1f5f9;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .subtheme-box h4 {
+            font-size: 15px;
+            color: var(--secondary-blue);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .conclusions-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .conclusions-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .conclusions-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .conclusions-list li::before {
+            content: '\f0a4';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-gold);
+            font-size: 18px;
+        }
+
+        /* PESTAÑA 4: REPOSITORIO SEMANAL */
+        .repo-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .repo-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .repo-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .upload-zone {
+            border: 2px dashed #cbd5e1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            background: var(--light-bg);
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--secondary-blue);
+            background: #eff6ff;
+        }
+
+        .upload-zone i {
+            font-size: 24px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .file-tags {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge-format {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+        }
+        .bg-pdf { background-color: #ef4444; }
+        .bg-word { background-color: #3b82f6; }
+        .bg-ppt { background-color: #f97316; }
+
+        /* PESTAÑA 5: ACTIVIDADES LÚDICAS */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-card h3 {
+            font-size: 18px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .game-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+
+        /* PESTAÑA 6: CUESTIONARIO AUTOEVALUADO */
+        .quiz-container {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .quiz-question {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .quiz-question h4 { font-size: 16px; color: var(--text-dark); margin-bottom: 12px; }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            transition: background 0.2s;
+        }
+
+        .quiz-options label:hover { background-color: var(--light-bg); }
+
+        /* PESTAÑA 7: AGENTE DE IA (LEONCIO) */
+        .ai-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 550px;
+        }
+
+        .ai-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .ai-avatar-large {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--primary-blue);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .ai-header-info h3 { color: white; margin-bottom: 0; font-size: 18px; }
+        .ai-header-info p { color: #cbd5e1; font-size: 12px; margin-bottom: 0; }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-bubble {
+            max-width: 75%;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 15px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .chat-bubble.bot {
+            background-color: white;
+            color: var(--text-dark);
+            align-self: flex-start;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .chat-bubble.user {
+            background-color: var(--secondary-blue);
+            color: white;
+            align-self: flex-end;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .audio-wave {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin-top: 5px;
+            background: rgba(0,0,0,0.05);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--primary-blue);
+        }
+        .chat-bubble.user .audio-wave { color: white; background: rgba(255,255,255,0.2); }
+
+        .ai-input-bar {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .ai-input-bar input {
+            flex-grow: 1;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .ai-input-bar input:focus { border-color: var(--secondary-blue); }
+
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+        }
+        .btn-mic { background-color: #e2e8f0; color: var(--text-dark); }
+        .btn-mic:hover { background-color: #cbd5e1; }
+        .btn-send { background-color: var(--primary-blue); color: white; }
+        .btn-send:hover { background-color: var(--primary-dark); }
+
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-placeholder">
+                <i class="fa-solid fa-graduation-cap" style="font-size: 40px; color: var(--primary-blue);"></i>
+            </div>
+            <h2>I.E. N.° 80621</h2>
+            <h2 style="color: var(--accent-gold);">"LEONCIO PRADO"</h2>
+            <p>Santiago de Chuco</p>
+        </div>
+        <ul class="nav-tabs">
+            <li class="nav-item active" onclick="switchTab(event, 'inicio')">
+                <i class="fa-solid fa-house"></i> Inicio
+            </li>
+            <li class="nav-item" onclick="switchTab(event, 'foro')">
+                <i class="fa-solid fa-comments"></i> Foro de Debate
+            </li>
+            <li class="nav-item" onclick="switchTab(event, 'modulos')">
+                <i class="fa-solid fa-book-open"></i> Módulos Curriculares
+            </li>
+            <li class="nav-item" onclick="switchTab(event, 'repositorio')">
+                <i class="fa-solid fa-folder-tree"></i> Repositorio Semanal
+            </li>
+            <li class="nav-item" onclick="switchTab(event, 'actividades')">
+                <i class="fa-solid fa-gamepad"></i> Actividades Lúdicas
+            </li>
+            <li class="nav-item" onclick="switchTab(event, 'cuestionario')">
+                <i class="fa-solid fa-square-check"></i> Autoevaluación
+            </li>
+            <li class="nav-item" onclick="switchTab(event, 'agente-ia')">
+                <i class="fa-solid fa-robot"></i> Tutor IA "Leoncio"
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <section id="inicio" class="tab-content active">
+            <div class="hero-banner">
+                <h1 class="hero-title">Empoderamiento de las TIC en Docentes de EBR</h1>
+                <p style="color: #e2e8f0; font-size: 16px;">Programa Curricular Especializado de Formación Continua Virtual</p>
+                <div class="hero-purpose">
+                    <strong>Propósito Central:</strong> Reducir la brecha digital docente en la región, promoviendo la innovación metodológica alineada al Currculo Nacional de Educación Básica, lo cual permitirá a los docentes modernizar su enseñanza, optimizar el tiempo de preparación de clases y responder a las demandas e intereses de aprendizaje de los estudiantes nativos digitales.
+                </div>
+            </div>
+
+            <div class="welcome-card">
+                <h2 style="margin-bottom: 15px;"><i class="fa-solid fa-handshake" style="color: var(--accent-gold);"></i> ¡Bienvenidos Colegas Leonciopradinos!</h2>
+                <p>Estimados docentes de los niveles de <strong>Inicial, Primaria y Secundaria</strong>, les damos la más cordial y cálida bienvenida a este Objeto Virtual de Aprendizaje (OVA). Este entorno ha sido diseñado bajo principios del <em>modelo pedagógico socio-constructivista y conectivista</em>, asumiendo que el aprendizaje en entornos virtuales es un proceso activo, colaborativo y situado.</p>
+                <p>A lo largo de 5 semanas de formación flexible, transitaremos juntos desde una alfabetización tecnológica instrumental hacia un empoderamiento tecno-pedagógico integral, permitiéndoles convertirse en diseñadores estratégicos de entornos interactivos capaces de promover el pensamiento crítico en el aula.</p>
+                
+                <div class="grid-metadata">
+                    <div class="meta-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <h4>Duración</h4>
+                        <p>5 Semanas</p>
+                    </div>
+                    <div class="meta-box">
+                        <i class="fa-solid fa-clock"></i>
+                        <h4>Dedicación</h4>
+                        <p>8 Horas Semanales</p>
+                    </div>
+                    <div class="meta-box">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <h4>Modalidad</h4>
+                        <p>Virtual Flexible</p>
+                    </div>
+                    <div class="meta-box">
+                        <i class="fa-solid fa-certificate"></i>
+                        <h4>Certificación</h4>
+                        <p>40 Horas Académicas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="foro" class="tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-comments"></i> Comunidad y Foro de Debate</h2>
+            <div class="forum-container">
+                <div class="forum-section">
+                    <h3><i class="fa-solid fa-users"></i> Sección 1: Socialización y Expectativas</h3>
+                    <p><strong>Consigna:</strong> Estimado/a colega, preséntate brevemente mencionando tu nivel o área de enseñanza en nuestra I.E. N.° 80621 "Leoncio Prado" y comparte con la comunidad virtual tus expectativas respecto al curso: ¿Qué metas personales tienes y qué esperas lograr?</p>
+                    <div class="comment-box">
+                        <textarea placeholder="Escribe aquí tu presentación y expectativas iniciales..."></textarea>
+                        <button class="btn" onclick="alert('¡Expectativa publicada con éxito!')">Publicar en el Foro</button>
+                    </div>
+                </div>
+
+                <div class="forum-section" style="border-left-color: var(--accent-gold);">
+                    <h3><i class="fa-solid fa-gavel"></i> Sección 2: Debate Académico de la Unidad</h3>
+                    <p>Participa críticamente respondiendo la siguiente pregunta orientadora orientada a nuestra realidad institucional en Santiago de Chuco:</p>
+                    <div class="forum-question">
+                        ¿De qué manera el desarrollo de la Competencia Digital Docente contribuye a la integración efectiva de las TIC en el Currículo Nacional de la Educación Básica Regular (EBR) y cuáles son los principales desafíos para lograrlo en nuestras instituciones educativas?
+                    </div>
+                    <div class="comment-box">
+                        <textarea placeholder="Redacta tu postura académica argumentada (Recuerda comentar la respuesta de al menos un compañero)..."></textarea>
+                        <button class="btn btn-gold" onclick="alert('¡Aporte al debate guardado para evaluación!')">Enviar Respuesta de Debate</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modulos" class="tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Estructura y Contenidos de Desarrollo</h2>
+            
+            <div class="module-accordion">
+                <div class="module-card">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Módulo I: Contexto y Fundamentos de las TIC en Educación</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="module-body">
+                        <p><strong>Competencia:</strong> Identifica el marco de la competencia digital docente y el potencial didáctico de las TIC en la Educación Básica Regular (EBR) vinculados al ecosistema institucional.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 1: El Marco de la Competencia Digital Docente</h4>
+                            <p>Análisis de las habilidades, conocimientos y actitudes para resolver problemas pedagógicos mediados por tecnología de forma crítica y segura, basándose en estándares de progresión internacional (Explorador A1/A2, Integrador B1/B2, Innovador C1/C2).</p>
+                        </div>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 2: El rol de las TIC en el Currículo Nacional de EBR</h4>
+                            <p>Desglose técnico de la <strong>Competencia Transversal 28</strong>: <em>"Se desenvuelve en los entornos virtuales generados por las TIC"</em>, operando críticamente sobre sus cuatro capacidades fundamentales: Personaliza entornos, Gestiona información, Interactúa en entornos virtuales y Crea objetos virtuales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Módulo II: Curación de Contenidos y Búsqueda de Información</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="module-body" style="display:none;">
+                        <p><strong>Competencia:</strong> Selecciona, filtra y evalúa estratégicamente recursos digitales que respondan a necesidades reales del aula escolar.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 1: Criterios pedagógicos para seleccionar materiales de internet</h4>
+                            <p>Uso de metodologías de evaluación de calidad de contenidos digitales (fiabilidad, rigor científico, pertinencia cognitiva por nivel educativo de inicial a secundaria, y licenciamiento ético).</p>
+                        </div>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 2: Repositorios educativos interactivos</h4>
+                            <p>Exploración dirigida y uso técnico-didáctico de bancos de recursos educativos abiertos, plataformas interactivas ministeriales y herramientas de marcadores sociales para la gestión documental docente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Módulo III: Creación de Recursos Educativos Digitales</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="module-body" style="display:none;">
+                        <p><strong>Competencia:</strong> Diseña materiales multimedia educativos e interactivos utilizando herramientas digitales accesibles para dinamizar la mediación.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 1: Diseño visual y didáctico de materiales educativos</h4>
+                            <p>Principios de la Gestalt aplicados al aprendizaje, andamiaje cognitivo audiovisual, balance de colores institucionales y legibilidad tipográfica para la estimulación de nativos digitales.</p>
+                        </div>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 2: Herramientas para infografías, presentaciones y videos didácticos (Canva, Genially)</h4>
+                            <p>Talleres de desarrollo práctico para la producción guiada de plantillas interactivas, infografías lúdicas y recursos dinámicos orientados a los tres niveles formativos de la EBR.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Módulo IV: Planificación Didáctica con TIC</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="module-body" style="display:none;">
+                        <p><strong>Competencia:</strong> Integra de manera coherente las TIC en una secuencia didáctica e innovadora orientada al logro de competencias del CNEB.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 1: Modelos de integración tecnológica (TPACK / SAMR)</h4>
+                            <p>Estudio aplicativo del modelo <strong>TPACK</strong> (Conocimiento Técnico Pedagógico del Contenido) y la escala **SAMR** (Sustitución, Aumento, Modificación, Redefinición) para evaluar el nivel de transformación digital en las aulas.</p>
+                        </div>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 2: Estructura de una sesión de aprendizaje innovadora</h4>
+                            <p>Inserción metodológica de herramientas Web 2.0/3.0 dentro de los procesos pedagógicos (Inicio, Desarrollo, Cierre), optimizando los tiempos de preparación y atención didáctica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header" onclick="toggleModule(this)">
+                        <h3>Módulo V: Evaluación de Impacto y Sustentación</h3>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="module-body" style="display:none;">
+                        <p><strong>Competencia:</strong> Socializa y defiende de manera reflexiva el impacto de su propuesta didáctica con TIC en el aula de educación básica regular.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 1: Reflexión sobre la práctica docente digital</h4>
+                            <p>Carga de productos académicos finales (Sesión integrada y sustentación), coevaluación entre pares y debates reflexivos sobre la transformación pedagógica continua.</p>
+                        </div>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-circle-dot"></i> Subtema 2: Evaluación del curso en línea</h4>
+                            <p>Aplicación de encuestas de satisfacción, rendición de evaluaciones en línea integradas automatizadas y cierre formal del ciclo formativo institucional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conclusions-box">
+                <h3><i class="fa-solid fa-star" style="color: var(--accent-gold);"></i> Conclusiones Significativas del Curso</h3>
+                <ul class="conclusions-list">
+                    <li><strong>Transformación Pedagógica Sólida:</strong> La competencia digital docente no es puramente instrumental (saber operar programas); requiere la fusión articulada de saberes disciplinares y pedagógicos mediante marcos de referencia como el TPACK y SAMR para generar una verdadera innovación en el aula.</li>
+                    <li><strong>Optimización de la Gestión Docente:</strong> La aplicación sistémica de criterios pedagógicos en la curación de contenidos y búsqueda de información en repositorios interactivos mitiga la infoxicación, reduce significativamente los tiempos de preparación de las clases y eleva la calidad de los materiales didácticos.</li>
+                    <li><strong>Dinamización para Nativos Digitales:</strong> El diseño visual estratégico y la producción de recursos educativos digitales (Canva/Genially) actúan como potentes andamiajes cognitivos que sintonizan la enseñanza tradicional con los intereses y demandas reales de los estudiantes del siglo XXI.</li>
+                    <li><strong>Sostenibilidad e Innovación Situada:</strong> La planificación estructurada en base a la Competencia Transversal 28 del CNEB garantiza que la integración tecnológica responda de manera situada y empática a la realidad y desafíos tecnológicos de las instituciones educativas públicas de nuestra región.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="repositorio" class="tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-folder-tree"></i> Repositorio de Almacenamiento Semanal</h2>
+            <p>Espacio asignado para la carga, almacenamiento y descarga de materiales de soporte por cada semana y subtema del curso. Formatos autorizados de carga docente: <strong>PDF, WORD y PPTX</strong>. <em>(Capacidad: Hasta 3 archivos por subtema)</em>.</p>
+            
+            <table class="repo-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 45%;">Módulo y Subtemas Vinculados</th>
+                        <th style="width: 40%;">Espacio de Carga Digital (2 a 3 archivos)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Semana 1</strong></td>
+                        <td>
+                            <strong>Módulo I: Contexto y Fundamentos</strong><br>
+                            <small>• Subtema 1: Marco de la CDD<br>• Subtema 2: Rol TIC en el CNEB</small>
+                        </td>
+                        <td>
+                            <div class="upload-zone" onclick="triggerUpload('S1')">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p style="font-size:13px; text-align:center; margin-bottom:0;">Arrastre o cargue documentos aquí</p>
+                                <div class="file-tags">
+                                    <span class="badge-format bg-pdf">Lectura1.pdf</span>
+                                    <span class="badge-format bg-ppt">RolTIC.pptx</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 2</strong></td>
+                        <td>
+                            <strong>Módulo II: Curación de Contenidos</strong><br>
+                            <small>• Subtema 1: Criterios Pedagógicos de Selección<br>• Subtema 2: Repositorios Interactivos</small>
+                        </td>
+                        <td>
+                            <div class="upload-zone" onclick="triggerUpload('S2')">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p style="font-size:13px; text-align:center; margin-bottom:0;">Arrastre o cargue documentos aquí</p>
+                                <div class="file-tags">
+                                    <span class="badge-format bg-word">FichaEvaluacion.docx</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 3</strong></td>
+                        <td>
+                            <strong>Módulo III: Creación de Recursos</strong><br>
+                            <small>• Subtema 1: Diseño Visual y Didáctico<br>• Subtema 2: Herramientas Interactivas (Canva)</small>
+                        </td>
+                        <td>
+                            <div class="upload-zone" onclick="triggerUpload('S3')">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p style="font-size:13px; text-align:center; margin-bottom:0;">Arrastre o cargue documentos aquí</p>
+                                <div class="file-tags"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 4</strong></td>
+                        <td>
+                            <strong>Módulo IV: Planificación con TIC</strong><br>
+                            <small>• Subtema 1: Modelos TPACK / SAMR<br>• Subtema 2: Sesión de Aprendizaje Innovadora</small>
+                        </td>
+                        <td>
+                            <div class="upload-zone" onclick="triggerUpload('S4')">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p style="font-size:13px; text-align:center; margin-bottom:0;">Arrastre o cargue documentos aquí</p>
+                                <div class="file-tags"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 5</strong></td>
+                        <td>
+                            <strong>Módulo V: Evaluación y Sustentación</strong><br>
+                            <small>• Subtema 1: Práctica Reflexiva Docente<br>• Subtema 2: Instrumentos y Productos Finales</small>
+                        </td>
+                        <td>
+                            <div class="upload-zone" onclick="triggerUpload('S5')">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p style="font-size:13px; text-align:center; margin-bottom:0;">Arrastre o cargue documentos aquí</p>
+                                <div class="file-tags"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="actividades" class="tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Banco de 10 Actividades Lúdicas Interactivas</h2>
+            <p style="margin-bottom: 25px;">Estrategias lúdicas gamificadas diseñadas metodológicamente para docentes de educación básica regular. Haz clic en "Iniciar Actividad" para simular la interacción tecnológica en el aula:</p>
+            
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-puzzle-piece" style="color:var(--primary-blue)"></i> 1. Rompecabezas del Marco CDD</h3>
+                    <p>Módulo I. Reorganiza espacialmente las 6 áreas de la competencia digital docente europea para estructurar el ecosistema.</p>
+                    <button class="btn btn-gold" onclick="alert('Iniciando Rompecabezas Virtual Interactivo...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-arrow-down-a-z" style="color:var(--primary-blue)"></i> 2. Pupiletras de la Competencia 28</h3>
+                    <p>Módulo I. Localiza términos clave: "Personaliza", "Gestiona", "Interactúa" y "Crea" ocultos en la matriz de letras.</p>
+                    <button class="btn btn-gold" onclick="alert('Iniciando Pupiletras Digital...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-hand-pointer" style="color:var(--primary-blue)"></i> 3. Arrastrar y Clasificar Criterios</h3>
+                    <p>Módulo II. Clasifica indicadores en cajas según correspondan a "Fiabilidad", "Pertinencia Pedagógica" o "Diseño Gráfico".</p>
+                    <button class="btn btn-gold" onclick="alert('Cargando tablero interactivo de Arrastrar y Soltar...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--primary-blue)"></i> 4. Relacionar Repositorios Abiertos</h3>
+                    <p>Módulo II. Une mediante líneas digitales logos de repositorios educativos internacionales y nacionales con sus funciones nucleares.</p>
+                    <button class="btn btn-gold" onclick="alert('Abriendo lienzo interactivo de emparejamiento...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-border-top-left" style="color:var(--primary-blue)"></i> 5. Crucigrama Tecno-Pedagógico</h3>
+                    <p>Módulo III. Resuelve de forma vertical y horizontal conceptos de diseño audiovisual y andamiaje cognitivo multimedia.</p>
+                    <button class="btn btn-gold" onclick="alert('Abriendo crucigrama gamificado...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-clone" style="color:var(--primary-blue)"></i> 6. Juego de Memoria: Canva vs Genially</h3>
+                    <p>Módulo III. Voltea cartas virtuales y empareja herramientas digitales idénticas reconociendo sus entornos nativos de diseño.</p>
+                    <button class="btn btn-gold" onclick="alert('Iniciando juego de memoria por tiempo...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-bezier-curve" style="color:var(--primary-blue)"></i> 7. Arrastrar Elementos del Modelo TPACK</h3>
+                    <p>Módulo IV. Ubica los círculos de conocimientos (Tecnológico, Pedagógico, Disciplinar) en sus intersecciones correctas.</p>
+                    <button class="btn btn-gold" onclick="alert('Cargando simulación TPACK interactiva...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-stairs" style="color:var(--primary-blue)"></i> 8. Escalera del Modelo SAMR</h3>
+                    <p>Módulo IV. Ordena actividades de aprendizaje de abajo hacia arriba según los peldaños: Sustituir, Aumentar, Modificar, Redefinir.</p>
+                    <button class="btn btn-gold" onclick="alert('Iniciando simulador de escalamiento SAMR...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--primary-blue)"></i> 9. Secuenciación de una Sesión Innovadora</h3>
+                    <p>Módulo V. Ordena cronológicamente las actividades formativas mediadas por TIC dentro de los momentos de Inicio, Desarrollo y Cierre.</p>
+                    <button class="btn btn-gold" onclick="alert('Iniciando panel lúdico de secuenciación...')">Iniciar Actividad</button>
+                </div>
+                <div class="game-card">
+                    <h3><i class="fa-solid fa-trophy" style="color:var(--primary-blue)"></i> 10. Ruleta de Prácticas Digitales</h3>
+                    <p>Módulo V. Gira la ruleta interactiva y responde en formato de juego de roles un dilema didáctico tecnológico en la I.E. Leoncio Prado.</p>
+                    <button class="btn btn-gold" onclick="alert('Haciendo girar la ruleta de dilemas docentes...')">Iniciar Actividad</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="cuestionario" class="tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-square-check"></i> Cuestionario de Autoevaluación Integral</h2>
+            <p style="margin-bottom: 25px;">Evalúa tu progreso formativo mediante este reactivo técnico de 10 preguntas diseñadas en base a los módulos curriculares ejecutados.</p>
+            
+            <div class="quiz-container">
+                <form id="quizForm" onsubmit="evaluateQuiz(event)">
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 1:</strong> ¿Cuáles son las cuatro capacidades de la Competencia Transversal 28 en el Currículo Nacional?</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q1" value="incorrect"> Uso, almacenamiento, distribución y programación de software.</label>
+                            <label><input type="radio" name="q1" value="correct"> Personaliza entornos virtuales, gestiona información, interactúa en entornos virtuales y crea objetos virtuales.</label>
+                            <label><input type="radio" name="q1" value="incorrect"> Hardware, software, conectividad y redes sociales institucionales.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 2:</strong> ¿Qué nivel de progresión en la CDD representa a un docente clasificado como "Integrador"?</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q2" value="incorrect"> Nivel básico inicial de exploración instrumental (A1/A2).</label>
+                            <label><input type="radio" name="q2" value="correct"> Nivel intermedio de apropiación donde aplica las TIC en contextos reales (B1/B2).</label>
+                            <label><input type="radio" name="q2" value="incorrect"> Nivel avanzado de liderazgo, rediseño y transformación institucional (C1/C2).</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 3:</strong> El primer paso para asegurar la validez metodológica en un proceso de Curación de Contenidos es:</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q3" value="correct"> Establecer criterios pedagógicos claros y verificar el rigor científico de la fuente de internet.</label>
+                            <label><input type="radio" name="q3" value="incorrect"> Compartir el enlace directamente en las redes sociales de los alumnos.</label>
+                            <label><input type="radio" name="q3" value="incorrect"> Descargar el archivo multimedia sin revisar el tipo de licenciamiento autoral.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 4:</strong> ¿Qué es un repositorio educativo interactivo abierto?</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q4" value="incorrect"> Un software comercial de pago cerrado para registrar notas institucionales.</label>
+                            <label><input type="radio" name="q4" value="correct"> Una plataforma digital estructurada que aloja materiales didácticos accesibles y de uso libre.</label>
+                            <label><input type="radio" name="q4" value="incorrect"> Una unidad de almacenamiento local tipo disco duro externo.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 5:</strong> En el diseño didáctico multimedia, ¿cuál es la función de la regla de balance visual y andamiaje cognitivo?</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q5" value="correct"> Sintonizar la carga cognitiva facilitando la retención de los contenidos clave mediante estímulos visuales limpios.</label>
+                            <label><input type="radio" name="q5" value="incorrect"> Agregar la mayor cantidad de animaciones simultáneas para entretener al estudiante nativo digital.</label>
+                            <label><input type="radio" name="q5" value="incorrect"> Reducir el tamaño de las letras para forzar lecturas extensas.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 6:</strong> Herramienta web que destaca en la creación de infografías y materiales interactivos con capas multimedia dinámicas:</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q6" value="incorrect"> Bloc de notas de Windows.</label>
+                            <label><input type="radio" name="q6" value="correct"> Genially.</label>
+                            <label><input type="radio" name="q6" value="incorrect"> WinRAR.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 7:</strong> ¿Qué significan las siglas del modelo de integración tecnopedagógica TPACK?</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q7" value="correct"> Technological Pedagogical Content Knowledge (Conocimiento Tecnológico Pedagógico del Contenido).</label>
+                            <label><input type="radio" name="q7" value="incorrect"> Technical Plan for Action and Classroom Knowledge.</label>
+                            <label><input type="radio" name="q7" value="incorrect"> Teoría de Planificación de Actividades Clínicas con Kits tecnológicos.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 8:</strong> En el modelo SAMR, el nivel máximo donde la tecnología permite crear nuevas actividades de aprendizaje antes impensables se denomina:</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q8" value="incorrect"> Sustitución.</label>
+                            <label><input type="radio" name="q8" value="incorrect"> Aumento.</label>
+                            <label><input type="radio" name="q8" value="correct"> Redefinición.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 9:</strong> Al planificar una sesión de aprendizaje innovadora con TIC, el uso tecnológico debe estar presente:</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q9" value="incorrect"> Exclusivamente en los primeros 5 minutos de la motivación.</label>
+                            <label><input type="radio" name="q9" value="correct"> Integrado intencionalmente en la secuencia metodológica según el propósito formativo de la sesión.</label>
+                            <label><input type="radio" name="q9" value="incorrect"> Únicamente durante la evaluación sumativa automatizada.</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <h4><strong>Pregunta 10:</strong> ¿Cuál es el propósito final de la práctica reflexiva en el marco de la evaluación del curso?</h4>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q10" value="correct"> Monitorear el impacto pedagógico real, ajustar estrategias metodológicas y garantizar la mejora continua en la institución.</label>
+                            <label><input type="radio" name="q10" value="incorrect"> Memorizar los nombres técnicos de los autores de software.</label>
+                            <label><input type="radio" name="q10" value="incorrect"> Cumplir administrativamente con un requisito de fin de año sin alterar las prácticas tradicionales.</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">Calificar Cuestionario</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="agente-ia" class="tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-robot"></i> Agente Tutor de IA "Leoncio"</h2>
+            <p>Interactúa en tiempo real con nuestro Asistente Cognitivo Institucional. Puedes enviarle consultas textuales o registrar notas de voz para recibir respuestas inmediatas guiadas en formato de texto y audio sintetizado.</p>
+            
+            <div class="ai-container">
+                <div class="ai-header">
+                    <div class="ai-avatar-large">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="ai-header-info">
+                        <h3>Tutor Inteligente "Leoncio"</h3>
+                        <p><span style="color:#22c55e;">●</span> En línea - Listo para asesorar en competencias digitales EBR</p>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-bubble bot">
+                        ¡Saludos, estimado/a docente de la I.E. "Leoncio Prado"! Soy Leoncio, tu agente de asistencia en metodologías activas y TIC. ¿En qué módulo formativo o diseño de sesión de aprendizaje te puedo asesorar hoy?
+                    </div>
+                </div>
+
+                <div class="ai-input-bar">
+                    <button class="btn-icon btn-mic" onclick="simulateAudioInput()" title="Grabar mensaje de voz">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <input type="text" id="userInput" placeholder="Escribe aquí tu consulta sobre el CNEB, TPACK, SAMR..." onkeypress="handleKeyPress(event)">
+                    <button class="btn-icon btn-send" onclick="sendTextMessage()" title="Enviar mensaje">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // 1. Alternar pestañas (Navegación lateral)
+        function switchTab(event, tabId) {
+            // Desactivar todos los ítems de navegación y pestañas de contenido
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Activar el seleccionado
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // 2. Acordeón modular de contenidos
+        function toggleModule(headerElement) {
+            const body = headerElement.nextElementSibling;
+            const icon = headerElement.querySelector('i');
+            
+            if (body.style.display === 'none' || body.style.display === '') {
+                body.style.display = 'block';
+                icon.className = 'fa-solid fa-chevron-up';
+            } else {
+                body.style.display = 'none';
+                icon.className = 'fa-solid fa-chevron-down';
+            }
+        }
+
+        // 3. Simulación de carga en repositorio
+        function triggerUpload(semana) {
+            alert("Abriendo ventana del sistema operativo para seleccionar archivos (PDF, WORD, PPTX) para la " + semana + ".\nSe permite subir hasta 3 archivos simultáneos por subtema.");
+        }
+
+        // 4. Evaluación automatizada del cuestionario de 10 preguntas
+        function evaluateQuiz(event) {
+            event.preventDefault();
+            const form = document.getElementById('quizForm');
+            let score = 0;
+            const totalQuestions = 10;
+            
+            // Recorrer las 10 preguntas evaluando los radios marcados con el valor "correct"
+            for (let i = 1; i <= totalQuestions; i++) {
+                const answer = form.elements['q' + i];
+                if (answer && answer.value === 'correct') {
+                    score++;
+                }
+            }
+            
+            const percentage = (score / totalQuestions) * 100;
+            let feedback = "Resultado de Autoevaluación:\n\n";
+            feedback += `Puntaje obtenido: ${score} de ${totalQuestions} respuestas correctas (${percentage}%).\n`;
+            
+            if (score >= 7) {
+                feedback += "¡Felicitaciones! Has demostrado un dominio óptimo de las competencias digitales del curso. Sigue innovando.";
+            } else {
+                feedback += "Te recomendamos revisar los módulos teóricos y volver a rendir la autoevaluación para consolidar los conceptos pedagógicos.";
+            }
+            
+            alert(feedback);
+        }
+
+        // 5. Simulación del Agente de Inteligencia Artificial (Conversación y Simulación de Audio)
+        function sendTextMessage() {
+            const input = document.getElementById('userInput');
+            const messageText = input.value.trim();
+            if (messageText === "") return;
+
+            appendBubble(messageText, 'user');
+            input.value = "";
+
+            // Simular pensamiento del agente IA
+            setTimeout(() => {
+                let botResponse = "Interesante planteamiento colega. Analizando tu consulta sobre el enfoque de las TIC en la educación escolarizada, te recuerdo que la Competencia Transversal 28 nos exige propiciar una mediación donde el alumno sea protagonista autónomo de la creación de objetos virtuales.";
+                if (messageText.toLowerCase().includes('samr') || messageText.toLowerCase().includes('tpack')) {
+                    botResponse = "Excelente consulta sobre los modelos. Recuerda que el modelo TPACK balancea el conocimiento tecnológico, pedagógico y disciplinar, mientras que el modelo SAMR te servirá para evaluar si estás solo Redefiniendo o Sustituyendo actividades en tus sesiones.";
+                }
+                appendBubble(botResponse, 'bot');
+            }, 1000);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendTextMessage();
+            }
+        }
+
+        function simulateAudioInput() {
+            appendBubble('<i class="fa-solid fa-microphone"></i> Mensaje de Audio Registrado (0:04) <div class="audio-wave"><span>🔊 |||||||</span></div>', 'user');
+            
+            setTimeout(() => {
+                appendBubble('<i class="fa-solid fa-volume-high"></i> Respuesta en Audio de Leoncio: "Estimado docente de la I.E. Leoncio Prado, respecto a tu consulta por audio, es clave que en el nivel de inicial priorices herramientas altamente visuales y lúdicas..." <div class="audio-wave"><span>🔊 ||||||||||||||||||</span></div>', 'bot');
+            }, 1200);
+        }
+
+        function appendBubble(text, sender) {
+            const container = document.getElementById('chatMessages');
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${sender}`;
+            bubble.innerHTML = text;
+            container.appendChild(bubble);
+            container.scrollTop = container.scrollHeight;
+        }
+    </script>
+</body>
+</html>
