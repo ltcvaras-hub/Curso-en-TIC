@@ -183,36 +183,38 @@
         .btn-gold { background-color: var(--accent-gold); color: var(--primary-dark); }
         .btn-gold:hover { background-color: #c59b27; color: white;}
 
-        /* PESTAÑA 3: MÓDULOS */
+        /* PESTAÑA 3: MÓDULOS RECTORAS (DISEÑO ORIGINAL COMPLETO) */
         .module-accordion { display: flex; flex-direction: column; gap: 20px; }
         .module-card { background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; border-top: 4px solid var(--primary-blue); }
         .module-header { background: var(--light-bg); padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
         .module-header h3 { margin-bottom: 0; font-size: 18px; }
         .module-body { padding: 25px; border-top: 1px solid #e2e8f0; }
+        .subtheme-box { background: #f1f5f9; padding: 15px 20px; border-radius: 8px; margin-top: 15px; }
+        .subtheme-box h4 { font-size: 15px; color: var(--secondary-blue); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
 
-        /* PESTAÑA 4: REPOSITORIO DE DRIVE */
-        .drive-box { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #22c55e; text-align: center;}
-        .drive-btn { background-color: #22c55e; color: white; padding: 15px 30px; font-size: 16px; border-radius: 8px; margin-top: 15px;}
-        .drive-btn:hover { background-color: #16a34a; }
-
-        /* PESTAÑA 5: JUEGOS INTERACTIVOS */
-        .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px; }
-        .game-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--accent-gold); display: flex; flex-direction: column; justify-content: space-between; }
-        .game-card h3 { font-size: 18px; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
-        .game-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+        /* REPOSITORIO ORIGINAL */
+        .repo-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-top: 20px; }
+        .repo-table th, .repo-table td { padding: 18px 20px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .repo-table th { background-color: var(--primary-blue); color: white; font-weight: 600; font-family: 'Poppins', sans-serif; }
+        
+        /* BANCO DE ACTIVIDADES (10 JUEGOS) */
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .game-card { background: white; border-radius: 12px; padding: 22px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--accent-gold); display: flex; flex-direction: column; justify-content: space-between; }
+        .game-card h3 { font-size: 16px; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .game-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4; }
+        .game-badge { background: #eff6ff; color: var(--secondary-blue); font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; align-self: flex-start; margin-bottom: 10px; text-transform: uppercase; }
         .game-playzone { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin-top: 25px; border: 2px dashed var(--accent-gold); display: none; }
         .puzzle-container { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
         .puzzle-piece { background: var(--light-bg); border: 2px solid #cbd5e1; padding: 12px; border-radius: 6px; cursor: move; font-weight: 600; display: flex; align-items: center; gap: 10px; }
         .trivia-container { margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
 
-        /* PESTAÑA 6: CUESTIONARIO */
+        /* CUESTIONARIO Y TUTOR */
         .quiz-container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .quiz-question { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; }
         .quiz-question h4 { font-size: 16px; color: var(--text-dark); margin-bottom: 12px; }
         .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-left: 10px; }
-        .quiz-options label { display: flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0; transition: background 0.2s; }
+        .quiz-options label { display: flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0; }
 
-        /* PESTAÑA 7: TUTOR IA CON AUDIO REAL */
         .ai-container { background: white; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; height: 500px; }
         .ai-header { background-color: var(--primary-blue); color: white; padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 3px solid var(--accent-gold); }
         .ai-avatar-large { width: 55px; height: 55px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--primary-blue); border: 2px solid var(--accent-gold); }
@@ -223,7 +225,6 @@
         .chat-bubble.bot { background-color: white; color: var(--text-dark); align-self: flex-start; border-left: 4px solid var(--accent-gold); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
         .chat-bubble.user { background-color: var(--secondary-blue); color: white; align-self: flex-end; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .audio-wave { display: inline-flex; align-items: center; gap: 3px; margin-top: 5px; background: #e2e8f0; padding: 5px 10px; border-radius: 20px; font-size: 12px; color: var(--primary-blue); cursor: pointer; }
-        .chat-bubble.user .audio-wave { color: white; background: rgba(255,255,255,0.2); }
         .ai-input-bar { padding: 20px; background: white; border-top: 1px solid #e2e8f0; display: flex; gap: 12px; align-items: center; }
         .ai-input-bar input { flex-grow: 1; padding: 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit; outline: none; }
         .btn-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; border: none; }
@@ -246,7 +247,7 @@
             <li class="nav-item active" onclick="switchTab(event, 'inicio')"><i class="fa-solid fa-house"></i> Inicio</li>
             <li class="nav-item" onclick="switchTab(event, 'foro')"><i class="fa-solid fa-comments"></i> Foro de Debate</li>
             <li class="nav-item" onclick="switchTab(event, 'modulos')"><i class="fa-solid fa-book-open"></i> Módulos Curriculares</li>
-            <li class="nav-item" onclick="switchTab(event, 'repositorio')"><i class="fa-solid fa-folder-tree"></i> Repositorio Entregas</li>
+            <li class="nav-item" onclick="switchTab(event, 'repositorio')"><i class="fa-solid fa-folder-tree"></i> Repositorio Semanal</li>
             <li class="nav-item" onclick="switchTab(event, 'actividades')"><i class="fa-solid fa-gamepad"></i> Actividades Lúdicas</li>
             <li class="nav-item" onclick="switchTab(event, 'cuestionario')"><i class="fa-solid fa-square-check"></i> Autoevaluación</li>
             <li class="nav-item" onclick="switchTab(event, 'agente-ia')"><i class="fa-solid fa-robot"></i> Tutor IA "Leoncio"</li>
@@ -298,257 +299,30 @@
         </section>
 
         <section id="modulos" class="tab-content">
-            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Módulos Curriculares</h2>
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Módulos Curriculares del Programa</h2>
             <div class="module-accordion">
                 <div class="module-card">
                     <div class="module-header" onclick="toggleModule(this)"><h3>Módulo I: Contexto y Fundamentos de las TIC</h3><i class="fa-solid fa-chevron-down"></i></div>
                     <div class="module-body">
-                        <p>Desglose de la <strong>Competencia Transversal 28</strong> del CNEB.</p>
+                        <p>Análisis reflexivo sobre marcos de competencias digitales docentes.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-check"></i> Subtema 1: Marco de la CDD</h4>
+                            <p>Evolución conceptual, estándares internacionales aplicados a la educación básica peruana.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header" onclick="toggleModule(this)"><h3>Módulo II: Modelos Tecno-Pedagógicos</h3><i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="module-body">
+                        <p>Modelación práctica para la integración curricular.</p>
+                        <div class="subtheme-box">
+                            <h4><i class="fa-solid fa-check"></i> Subtema 1: Modelos TPACK y SAMR</h4>
+                            <p>Sinergia entre contenido, pedagogía y tecnología para planificar experiencias significativas.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="repositorio" class="tab-content">
-            <h2 class="section-title"><i class="fa-solid fa-folder-tree"></i> Repositorio de Almacenamiento</h2>
-            <div class="drive-box">
-                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 50px; color: #22c55e; margin-bottom: 15px;"></i>
-                <h3>Envío Limpio de Evidencias y Recursos</h3>
-                <p>Para garantizar que tus archivos se almacenen de forma segura, utilizamos nuestro espacio institucional en Google Drive.</p>
-                <a href="https://drive.google.com" target="_blank" style="text-decoration: none;">
-                    <button class="btn drive-btn"><i class="fa-brands fa-google-drive"></i> Abrir Carpeta de Recepción de Tareas</button>
-                </a>
-            </div>
-        </section>
-
-        <section id="actividades" class="tab-content">
-            <h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Banco de Actividades Lúdicas Interactivas</h2>
-            <div class="games-grid">
-                <div class="game-card">
-                    <h3><i class="fa-solid fa-puzzle-piece" style="color:var(--primary-blue)"></i> 1. Rompecabezas del Marco CDD</h3>
-                    <p>Módulo I. Ordena de menor a mayor los 3 niveles de progresión de la competencia digital docente.</p>
-                    <button class="btn btn-gold" onclick="launchGame(1)">Iniciar Actividad</button>
-                </div>
-                <div class="game-card">
-                    <h3><i class="fa-solid fa-arrow-down-a-z" style="color:var(--primary-blue)"></i> 2. Desafío de la Competencia 28</h3>
-                    <p>Módulo I. Relaciona las capacidades fundamentales.</p>
-                    <button class="btn btn-gold" onclick="launchGame(2)">Iniciar Actividad</button>
-                </div>
-            </div>
-            <div id="playzone" class="game-playzone">
-                <div id="game-content"></div>
-                <br>
-                <button class="btn" onclick="closeGame()" style="background-color: #ef4444;">Cerrar Escenario de Juego</button>
-            </div>
-        </section>
-
-        <section id="cuestionario" class="tab-content">
-            <h2 class="section-title"><i class="fa-solid fa-square-check"></i> Autoevaluación Integral</h2>
-            <div class="quiz-container">
-                <form id="quizForm" onsubmit="evaluateQuiz(event)">
-                    <div class="quiz-question">
-                        <h4><strong>Pregunta 1:</strong> ¿Cuáles son las capacidades de la Competencia 28?</h4>
-                        <div class="quiz-options">
-                            <label><input type="radio" name="q1" value="correct"> Personaliza entornos virtuales, gestiona información, interactúa y crea objetos virtuales.</label>
-                            <label><input type="radio" name="q1" value="incorrect"> Comprar software, navegar en redes sociales y hardware básico.</label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn">Calificar Cuestionario</button>
-                </form>
-            </div>
-        </section>
-
-        <section id="agente-ia" class="tab-content">
-            <h2 class="section-title"><i class="fa-solid fa-robot"></i> Tutor IA "Leoncio"</h2>
-            <p style="margin-bottom: 15px; font-size:14px;"><i class="fa-solid fa-volume-high"></i> ¡Nuevo! El tutor ahora cuenta con voz real integrada. Escribe o usa el micrófono para escucharlo.</p>
-            <div class="ai-container">
-                <div class="ai-header">
-                    <div class="ai-avatar-large"><i class="fa-solid fa-robot"></i></div>
-                    <div class="ai-header-info">
-                        <h3>Tutor Inteligente "Leoncio"</h3>
-                        <p><span style="color:#22c55e;">●</span> En línea - Asesor de Voz Activo</p>
-                    </div>
-                </div>
-                <div class="chat-messages" id="chatMessages">
-                    <div class="chat-bubble bot">
-                        ¡Saludos, estimado/a docente de la I.E. "Leoncio Prado"! Soy Leoncio. Haz clic en mí o escríbeme para conversar con voz sobre la Competencia 28, el modelo TPACK o la planificación didáctica.
-                        <br>
-                        <div class="audio-wave" onclick="speakText('¡Saludos, estimado o estimada docente de la institución educativa Leoncio Prado! Soy Leoncio. Escríbeme para conversar con voz sobre la Competencia 28, el modelo te pack o la planificación didáctica.')">
-                            <span><i class="fa-solid fa-volume-high"></i> Escuchar saludo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ai-input-bar">
-                    <button class="btn-icon btn-mic" onclick="simulateAudioInput()" title="Grabar nota de voz ficticia">
-                        <i class="fa-solid fa-microphone"></i>
-                    </button>
-                    <input type="text" id="userInput" placeholder="Escribe aquí tu duda..." onkeypress="handleKeyPress(event)">
-                    <button class="btn-icon btn-send" onclick="sendTextMessage()"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <script>
-        function switchTab(event, tabId) {
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-
-        function toggleModule(headerElement) {
-            const body = headerElement.nextElementSibling;
-            body.style.display = (body.style.display === 'none' || body.style.display === '') ? 'block' : 'none';
-        }
-
-        /* --- MOTOR DE VOZ REAL (NATIVO WEB SPEECH API) --- */
-        function speakText(textToSpeak) {
-            // Cancelar cualquier lectura previa pendiente
-            window.speechSynthesis.cancel();
-            
-            const utterance = new SpeechSynthesisUtterance(textToSpeak);
-            utterance.lang = 'es-ES'; // Configurar idioma español
-            utterance.rate = 1.0;     // Velocidad normal de lectura
-            utterance.pitch = 1.0;    // Tono de voz estándar
-            
-            window.speechSynthesis.speak(utterance);
-        }
-
-        function launchGame(gameId) {
-            const playzone = document.getElementById('playzone');
-            const content = document.getElementById('game-content');
-            playzone.style.display = "block";
-            
-            if (gameId === 1) {
-                content.innerHTML = `
-                    <h3>🎮 Juego 1: Ordenar Niveles de Progresión CDD</h3>
-                    <div class="puzzle-container">
-                        <div class="puzzle-piece" draggable="true" id="p1">⭐ Integrador (B1/B2)</div>
-                        <div class="puzzle-piece" draggable="true" id="p2">⭐ Explorador (A1/A2)</div>
-                        <div class="puzzle-piece" draggable="true" id="p3">⭐ Innovador / Líder (C1/C2)</div>
-                    </div>
-                    <button class="btn btn-gold" onclick="checkGame1()">Verificar Orden</button>
-                `;
-                setupDragAndDrop();
-            } else if (gameId === 2) {
-                content.innerHTML = `
-                    <h3>🎮 Juego 2: Desafío de Capacidades</h3>
-                    <p>¿Qué capacidad representa modificar entornos virtuales según las necesidades socioculturales?</p>
-                    <div class="trivia-container">
-                        <label><input type="radio" name="g2" value="wrong"> Crea objetos virtuales</label><br>
-                        <label><input type="radio" name="g2" value="right"> Personaliza entornos virtuales</label>
-                    </div>
-                    <button class="btn btn-gold" onclick="checkGame2()">Validar Respuesta</button>
-                `;
-            }
-            playzone.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function closeGame() { document.getElementById('playzone').style.display = "none"; }
-
-        function setupDragAndDrop() {
-            const pieces = document.querySelectorAll('.puzzle-piece');
-            let draggedItem = null;
-            pieces.forEach(piece => {
-                piece.addEventListener('dragstart', () => draggedItem = piece);
-                piece.addEventListener('dragover', (e) => e.preventDefault());
-                piece.addEventListener('drop', (e) => {
-                    if(draggedItem !== piece) {
-                        let parent = piece.parentNode;
-                        parent.insertBefore(draggedItem, piece);
-                    }
-                });
-            });
-        }
-
-        function checkGame1() {
-            const pieces = document.querySelectorAll('.puzzle-piece');
-            if (pieces[0].innerText.includes("Explorador") && pieces[1].innerText.includes("Integrador") && pieces[2].innerText.includes("Innovador")) {
-                alert("¡Excelente! Orden correcto.");
-            } else {
-                alert("Orden incorrecto. Secuencia: Explorador, Integrador, Innovador.");
-            }
-        }
-
-        function checkGame2() {
-            const selected = document.querySelector('input[name="g2"]:checked');
-            if(!selected) return alert("Selecciona una opción");
-            if(selected.value === "right") alert("¡Brillante! Respuesta correcta.");
-            else alert("Incorrecto.");
-        }
-
-        function evaluateQuiz(event) {
-            event.preventDefault();
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            if (q1 && q1.value === "correct") alert("¡Cuestionario aprobado!");
-            else alert("Revisa tus respuestas.");
-        }
-
-        /* --- INTERACCIÓN DEL TUTOR INTELIGENTE CON VOZ ACTIVA --- */
-        function sendTextMessage() {
-            const input = document.getElementById('userInput');
-            const messageText = input.value.trim();
-            if (messageText === "") return;
-
-            appendBubble(messageText, 'user');
-            input.value = "";
-
-            // Lógica de respuesta inteligente con voz en tiempo real
-            setTimeout(() => {
-                let textResponse = "Entendido, estimado colega. Recuerda que para lograr la integración de las TIC debemos guiar nuestra sesión mediante el modelo pedagógico socio-constructivista.";
-                
-                if (messageText.toLowerCase().includes('samr') || messageText.toLowerCase().includes('tpack')) {
-                    textResponse = "Excelente consulta sobre los modelos. El modelo te pack equilibra tecnología, pedagogía y tu contenido de área, mientras que samr mide la transformación digital de tu clase.";
-                } else if (messageText.toLowerCase().includes('competencia 28') || messageText.toLowerCase().includes('cneb')) {
-                    textResponse = "La competencia transversal 28 busca que el estudiante se desenvuelva de forma autónoma y crítica en los entornos virtuales a través de sus cuatro capacidades básicas.";
-                }
-
-                // Añadir burbuja de texto con botón para volver a escuchar
-                appendBubbleWithVoice(textResponse, 'bot');
-                
-                // ¡Hacer que el navegador hable de inmediato!
-                speakText(textResponse);
-
-            }, 1000);
-        }
-
-        function handleKeyPress(e) { if (e.key === 'Enter') sendTextMessage(); }
-
-        function simulateAudioInput() {
-            appendBubble('<i class="fa-solid fa-microphone"></i> Audio del docente registrado', 'user');
-            setTimeout(() => {
-                const response = "Estimado colega león ciopradino, respecto a tu consulta por audio, te sugiero priorizar herramientas dinámicas como Canva para motivar a tus estudiantes.";
-                appendBubbleWithVoice(response, 'bot');
-                speakText(response);
-            }, 1200);
-        }
-
-        function appendBubble(text, sender) {
-            const container = document.getElementById('chatMessages');
-            const bubble = document.createElement('div');
-            bubble.className = `chat-bubble ${sender}`;
-            bubble.innerHTML = text;
-            container.appendChild(bubble);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function appendBubbleWithVoice(text, sender) {
-            const container = document.getElementById('chatMessages');
-            const bubble = document.createElement('div');
-            bubble.className = `chat-bubble ${sender}`;
-            
-            // Creamos el contenido de texto y agregamos el botón interactivo de altavoz
-            bubble.innerHTML = `
-                ${text}<br>
-                <div class="audio-wave" onclick="speakText('${text.replace(/'/g, "\\'")}')">
-                    <span><i class="fa-solid fa-volume-high"></i> Volver a escuchar</span>
-                </div>
-            `;
-            container.appendChild(bubble);
-            container.scrollTop = container.scrollHeight;
-        }
-    </script>
-</body>
-</html>
+            <h2 class="section-title"><i class="fa-solid fa-folder-tree
